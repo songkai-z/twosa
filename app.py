@@ -195,7 +195,7 @@ def compare_two_sets(
     df = pd.DataFrame({
         "x": reduced_embeddings[:, 0],
         "y": reduced_embeddings[:, 1],
-        "text": all_disp,         # 这里放“带出处”的文本
+        "text": all_disp,         # Text with citation
         "source": all_source,
         "kmeans_label": kmeans_labels,
         "hier_label": hier_labels
@@ -441,7 +441,6 @@ By checking how snippets from Set A and Set B distribute across these clusters, 
                 st.markdown(f"**Cluster {label}** (showing up to 5 random samples)")
                 sample_subset = subset.sample(min(5, len(subset)))
                 for _, row in sample_subset.iterrows():
-                    # 用 Markdown 加粗
                     highlighted_text = row["text"].replace(target_word, f"**{target_word}**")
                     st.markdown(f"- {row['source']}: {highlighted_text}")
 
