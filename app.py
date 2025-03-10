@@ -228,17 +228,25 @@ def main():
     </div>
     <hr style='margin: 0 0 20px 0;'>
     """
-
     components.html(html_content, height=200)
-    with st.expander("Quick Start"):
-        st.markdown("""
-        1. Enter the word you want to analyze.
+    st.markdown("""
+     This is an experimental tool that uses machine learning techniques to show word similarities in the Babylonian and Jerusalem Talmuds.  It will also allow you to compare how specific tractates use a word.  It works by first mapping phrases (the length of which is determined by the "Window") into a multidimensional matrix, then computing the distance between those occurrences, and finally sorting these occurrences into clusters based on the distances.  The parameters are explained further in the menu on the left.  You can hover over the points on the visualization to see more data.
+
+A similarity score of under 0.7 generally indicates that there is a likelihood of differing usage of the same word.  We suggest that you begin with a K-Means and Hierarchical Cluster of "2" for exploratory purposes and then adjust from there.
+
+Note that this presently works only with exact strings and you must use the Hebrew Unicode alphabet.  So, for example, אמר and שנאמר are treated as two separate words.  We are looking into how to incorporate stemmed and lemmatized words into this tool.
+
+We want to hear from you!  Let us know if you have suggestions for improving the tool or have found some interesting results.  What kinds of new research questions does this tool raise?  What would make it more useful?  If you have ideas, please send them to Michael_Satlow@Brown.edu.
+
+To start:
+
+1. Enter the word you want to analyze.
 2. Choose a window size.
 3. Select the source (Yerushalmi or Bavli) for the chosen tractate(s).
 4. Select the desired tractate(s) from the dropdown menu.
 5. Click "Compare".
-
-**Please note that the analysis may take a few minutes, particularly when comparing the Bavli and Yerushalmi as a whole.**
+The development of this tool has been supported by Brown University and the Center for Digital Scholarship at the Brown University Library.  The code for it can be found here [GitHub Repository](https://github.com/songkai-z/twosa)
+   
                 """)
 
     # 1. General parameters
