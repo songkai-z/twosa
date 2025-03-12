@@ -3,7 +3,7 @@
 ## Overview  
 This repository contains the source code for [TwoSA (Talmud Word Similarity Analysis)](https://twosa.us.reclaim.cloud/) — a web-based tool that uses machine learning techniques to analyze word similarities in the Babylonian and Jerusalem Talmuds.  
 
-TwoSA allows researchers to compare how specific tractates use a given word by computing word embeddings and clustering them based on similarity scores. It maps phrases into a multidimensional matrix, computes distances between occurrences, and sorts them into clusters using K-Means and Hierarchical Clustering algorithms. The results are visualized, enabling researchers to explore patterns in Talmudic language usage.  
+TwoSA allows researchers to compare how specific tractates use a given word by computing word embeddings (using [BEREL](https://huggingface.co/dicta-il/BEREL_2.0)) and clustering them based on similarity scores. It maps phrases into a multidimensional matrix, computes distances between occurrences, and sorts them into clusters using K-Means and Hierarchical Clustering algorithms. The results are visualized, enabling researchers to explore patterns in Talmudic language usage.  
 
 ## Running Locally  
 1. **Pull the Docker Image:**  
