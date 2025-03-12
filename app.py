@@ -246,7 +246,9 @@ def main():
     2. Choose a window size.
     3. Select the source (Yerushalmi or Bavli) for the chosen tractate(s).
     4. Select the desired tractate(s) from the dropdown menu.
-    5. Click "Compare".   
+    5. Click "Compare".  
+    
+    **Please note that the comparison may take 3 to 15 minutes to process. Comparisons of words that appear more frequently in the text may take longer.**   
     
     The development of this tool has been supported by Brown University and the Center for Digital Scholarship at the Brown University Library. The texts have been downloaded from [Sefaria](https://github.com/sefaria) and further refined by Michael Sperling. The code for this application can be found here: [GitHub Repository](https://github.com/songkai-z/twosa).
        
@@ -325,9 +327,11 @@ def main():
                     """)
     # 3. On "Compare" button: filter + build SetA/SetB => compare
     if st.sidebar.button("Compare"):
+        process_placeholder = st.empty()
+        with process_placeholder:
+            st.markdown("**Please note that the comparison may take 3 to 15 minutes to process. Comparisons of words that appear more frequently in the text may take longer.** ")
         instructions_placeholder.empty()
         with st.spinner("Processing..."):
-
             def filter_for_corpus(corpus, selected):
                 if corpus == "Yerushalmi":
                     df_ = filter_chapters(yeru_df, "Tractate", selected)
@@ -367,7 +371,7 @@ def main():
         if df is None or df.empty:
             st.warning("Comparison failed or no data to visualize.")
             return
-
+        process_placeholder.empty()
         st.success(f"Comparison complete! Average Similarity = {avg_sim:.4f} (Set A vs. Set B)")
         with st.expander("About Average Similarity"):
             st.markdown("""
